@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:get/get.dart';
 
 const double BUTTON_RADIUS = 8.0;
 const double INPUT_RADIUS = 20.0;
@@ -37,7 +38,15 @@ class Themes {
         fillColor: IColor().LIGHT_INPUT_COLOR,
       ));
   static final dark = ThemeData.dark().copyWith(
-      iconTheme: const IconThemeData(color: Colors.white54),
+      iconTheme: IconThemeData(color: IColor().DARK_PRIMARY_COLOR),
+      unselectedWidgetColor: Colors.red,
+      checkboxTheme: CheckboxThemeData(
+        materialTapTargetSize: MaterialTapTargetSize.padded,
+        fillColor: MaterialStateProperty.all(IColor().Dark_CHECK_COLOR),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
       brightness: Brightness.dark,
       backgroundColor: IColor().DARK_BG_COLOR,
       primaryColor: IColor().DARK_PRIMARY_COLOR,
@@ -62,7 +71,8 @@ class Themes {
         headline1: TextStyle(
             color: IColor().DARK_TEXT_COLOR,
             fontFamily: "OpenSans",
-            fontSize: 28),
+            fontSize: 22,
+            fontWeight: FontWeight.w600),
         subtitle1: TextStyle(
             color: IColor().DARK_TEXT_COLOR.withOpacity(0.6),
             fontFamily: "OpenSans",
@@ -70,6 +80,11 @@ class Themes {
             fontSize: 16),
         subtitle2: TextStyle(
             color: IColor().DARK_PRIMARY_COLOR,
+            fontFamily: "OpenSans",
+            fontWeight: FontWeight.normal,
+            fontSize: 14),
+        headline2: TextStyle(
+            color: IColor().Dark_CHECK_COLOR,
             fontFamily: "OpenSans",
             fontWeight: FontWeight.normal,
             fontSize: 14),
@@ -92,7 +107,9 @@ class IColor {
   Color LIGHT_BG_COLOR = Colors.white;
   Color DARK_BG_COLOR = Color(0xff131212);
   Color DARK_PRIMARY_COLOR = Color(0xffFFD60A);
+  Color Dark_CHECK_COLOR = Color(0xff30D158);
   Color DARK_ACCENT_COLOR = Colors.lightBlueAccent;
   Color DARK_TEXT_COLOR = Color(0xFFFFFFFF);
   Color DARK_INPUT_COLOR = Colors.black26;
+  Color DARK_RULE_WIDGET_COLOR = Color(0xff636366);
 }

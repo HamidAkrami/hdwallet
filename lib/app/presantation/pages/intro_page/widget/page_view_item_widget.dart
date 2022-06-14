@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hd_wallet/app/presantation/theme/themes.dart';
@@ -27,7 +29,7 @@ class PageviewItemWidget extends StatelessWidget {
         SizedBox(
           height: 30,
         ),
-        Expanded(flex: 2, child: SvgPicture.asset(imageAssetUrl!)),
+        Expanded(flex: 2, child: Image.asset(imageAssetUrl!)),
         SizedBox(
           height: 30,
         ),
@@ -48,18 +50,18 @@ class PageviewItemWidget extends StatelessWidget {
     switch (index) {
       case 0:
         title = "The crypto wallet for everyone";
-        imageAssetUrl = "assets/images/intro1.svg";
+        imageAssetUrl = "assets/images/intro1.png";
         details = "create new or import your wallet";
 
         break;
       case 1:
         title = "Privacy and Security";
-        imageAssetUrl = "assets/images/intro2.svg";
+        imageAssetUrl = "assets/images/intro2.png";
         details = "private keys never leave your device";
         break;
       case 2:
         title = "Send & Receive instantly";
-        imageAssetUrl = "assets/images/intro3.svg";
+        imageAssetUrl = "assets/images/intro3.png";
         details = "the fastest way to Send and Receive any crypto or token.";
         break;
       default:

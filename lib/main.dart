@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
       darkTheme: Themes.dark,
       themeMode: ThemeMode.system,
       initialRoute: AppRoutes.introPage,
+      debugShowCheckedModeBanner: false,
 
       translations: Messages(),
       fallbackLocale: const Locale('en', 'US'),
