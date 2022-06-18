@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:hd_wallet/app/presantation/pages/enter_secret_phrase_page/enter_secret_phrase_page.dart';
+import 'package:hd_wallet/app/presantation/pages/public_widgets/success_dialog.dart';
+import 'package:hd_wallet/app/presantation/routes/app_routes.dart';
 import 'package:hd_wallet/app/presantation/theme/themes.dart';
 
 class SecretPhrasePage extends StatefulWidget {
@@ -145,7 +148,10 @@ class _SecretPhrasePageState extends State<SecretPhrasePage> {
                     children: [
                       Expanded(
                           child: ElevatedButton(
-                              onPressed: () {}, child: Text("Continue"))),
+                              onPressed: () {
+                                Get.to(EnterSecretPhrasePage());
+                              },
+                              child: Text("Continue"))),
                     ],
                   )
                 ],

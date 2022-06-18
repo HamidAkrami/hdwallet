@@ -37,6 +37,6 @@ class App {
       page: () => const AgreementPage(),
     ),
     GetPage(
-        name: AppRoutes.secretPhrasePage, page: () => const SecretPhrasePage())
+        name: AppRoutes.secretPhrasePage, page: () => const SecretPhrasePage()),
   ];
 }
