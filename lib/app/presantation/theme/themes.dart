@@ -68,27 +68,31 @@ class Themes {
               // backgroundColor: MaterialStateProperty.all<Color>(IColor().LIGHT_ACCENT_COLOR)
               )),
       textTheme: TextTheme(
-        headline1: TextStyle(
-            color: IColor().DARK_TEXT_COLOR,
-            fontFamily: "OpenSans",
-            fontSize: 22,
-            fontWeight: FontWeight.w600),
-        subtitle1: TextStyle(
-            color: IColor().DARK_TEXT_COLOR.withOpacity(0.6),
-            fontFamily: "OpenSans",
-            fontWeight: FontWeight.normal,
-            fontSize: 16),
-        subtitle2: TextStyle(
-            color: IColor().DARK_PRIMARY_COLOR,
-            fontFamily: "OpenSans",
-            fontWeight: FontWeight.normal,
-            fontSize: 14),
-        headline2: TextStyle(
-            color: IColor().Dark_CHECK_COLOR,
-            fontFamily: "OpenSans",
-            fontWeight: FontWeight.normal,
-            fontSize: 14),
-      ),
+              headline1: TextStyle(
+                  color: IColor().DARK_TEXT_COLOR,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600),
+              subtitle1: TextStyle(
+                  color: IColor().DARK_TEXT_COLOR.withOpacity(0.6),
+                  fontWeight: FontWeight.normal,
+                  fontSize: 16),
+              subtitle2: TextStyle(
+                  color: IColor().DARK_PRIMARY_COLOR,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14),
+              headline2: TextStyle(
+                  color: IColor().Dark_CHECK_COLOR,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14),
+              headline3: TextStyle(
+                  color: IColor().DARK_TEXT_COLOR,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32),
+              bodyText1: TextStyle(
+                  color: IColor().DARK_PRIMARY_COLOR,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14))
+          .apply(fontFamily: "OpenSans"),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(INPUT_RADIUS),
@@ -105,11 +109,12 @@ class IColor {
   Color LIGHT_INPUT_COLOR = Colors.black26.withOpacity(0.1);
   Color LIGHT_ICON_COLOR = Colors.black26.withOpacity(0.1);
   Color LIGHT_BG_COLOR = Colors.white;
-  Color DARK_BG_COLOR = Color(0xff131212);
+  Color DARK_BG_COLOR = Color(0xff1C1C1E);
   Color DARK_PRIMARY_COLOR = Color(0xffFFD60A);
   Color Dark_CHECK_COLOR = Color(0xff30D158);
   Color DARK_ACCENT_COLOR = Colors.lightBlueAccent;
   Color DARK_TEXT_COLOR = Color(0xFFFFFFFF);
   Color DARK_INPUT_COLOR = Colors.black26;
   Color DARK_RULE_WIDGET_COLOR = Color(0xff636366);
+  Color DARK_BUTTOM_COLOR = Color(0xffF2F2F7);
 }

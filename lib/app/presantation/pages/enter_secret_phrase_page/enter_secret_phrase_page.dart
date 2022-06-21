@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hd_wallet/app/presantation/pages/enter_secret_phrase_page/widgets/secret_phrase_lenght.dart';
+import 'package:hd_wallet/app/presantation/pages/home/home_page.dart';
 import 'package:hd_wallet/app/presantation/pages/public_widgets/secret_phrase_item_widget.dart';
 import 'package:hd_wallet/app/presantation/theme/themes.dart';
 
@@ -127,9 +129,7 @@ class _EnterSecretPhrasePageState extends State<EnterSecretPhrasePage> {
                 )),
             Expanded(
               child: GestureDetector(
-                onTap: () {
-                  print("paste");
-                },
+                onTap: () {},
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,7 +151,10 @@ class _EnterSecretPhrasePageState extends State<EnterSecretPhrasePage> {
               children: [
                 Expanded(
                     child: ElevatedButton(
-                        onPressed: () {}, child: Text("Import"))),
+                        onPressed: () {
+                          Get.to(HomePage());
+                        },
+                        child: Text("Import"))),
               ],
             )
           ],

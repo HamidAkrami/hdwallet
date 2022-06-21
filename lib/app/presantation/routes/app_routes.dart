@@ -24,10 +24,10 @@ class App {
       name: AppRoutes.introPage,
       page: () => IntroPage(),
     ),
-    GetPage(
-      name: AppRoutes.homePage,
-      page: () => const HomePage(),
-    ),
+    // GetPage(
+    //   name: AppRoutes.homePage,
+    //   page: () => const HomePage(),
+    // ),
     GetPage(
         name: AppRoutes.settingPage,
         page: () => const SettingPage(),
