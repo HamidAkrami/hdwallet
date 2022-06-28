@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hd_wallet/app/presantation/pages/home/home_page_widget/toke_item_widget.dart';
+import 'package:get/get.dart';
+import 'package:hd_wallet/app/data/models/coin_model.dart';
+import 'package:hd_wallet/app/presantation/pages/assets_page/assets_pages.dart';
+import 'package:hd_wallet/app/presantation/pages/coin_page/coin_page.dart';
+import 'package:hd_wallet/app/presantation/pages/currency_page/currency_page.dart';
+import 'package:hd_wallet/app/presantation/pages/home/home_page_widget/send_receive_bottom_sheet.dart';
+import 'package:hd_wallet/app/presantation/pages/home/home_page_widget/token_item_widget.dart';
+import 'package:hd_wallet/app/presantation/pages/setting/setting_page.dart';
+import 'package:hd_wallet/app/presantation/pages/settings/settings_page.dart';
 import 'package:hd_wallet/app/presantation/theme/themes.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,6 +17,45 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool search = false;
+  int? coinIndex;
+  startSendOrRecievePage(title) {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        context: context,
+        builder: (context) {
+          return SendAndReceiveBottomSheet(
+            title: title,
+          );
+        });
+  }
+
+  showSetting() {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        context: context,
+        builder: (context) {
+          return SettingsPage();
+        });
+  }
+
+  showCoinPage() {
+    CoinModel coin = CoinModel(
+        name: "BitCoin",
+        imageUrl: "assets/images/Logo.png",
+        usd24hChange: 98.51,
+        usd: 21000);
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        context: context,
+        builder: (context) {
+          return CoinPage(
+            coin: coin,
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +73,9 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showSetting();
+                          },
                           icon: Image.asset("assets/icons/setting.png")),
                       IconButton(
                           onPressed: () {
@@ -51,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           InkWell(
                             onTap: () {
+                              startSendOrRecievePage("Receive");
                               print("Receive");
                             },
                             child: Container(
@@ -83,6 +133,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           InkWell(
                             onTap: () {
+                              startSendOrRecievePage("Send");
                               print("Send");
                             },
                             child: Container(
@@ -146,7 +197,9 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 20, color: IColor().DARK_TEXT_COLOR),
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(AssetPage());
+                            },
                             child: Container(
                               padding: EdgeInsets.all(8),
                               decoration: BoxDecoration(
@@ -213,7 +266,11 @@ class _HomePageState extends State<HomePage> {
                               horizontal: 10,
                             ),
                             itemCount: 10,
-                            itemBuilder: (context, index) => TokenItemWidget()),
+                            itemBuilder: (context, index) => InkWell(
+                                onTap: () {
+                                  showCoinPage();
+                                },
+                                child: TokenItemWidget())),
                       ),
                     )
                   ],
@@ -226,131 +283,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-class CustomSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final double expandedHeight;
-  final deviceSie;
-
-  const CustomSliverAppBarDelegate(
-      {required this.expandedHeight, this.deviceSie});
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    final size = deviceSie;
-    final top = expandedHeight - shrinkOffset - size / 2;
-
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        buildAppBar(shrinkOffset),
-        Positioned(
-          top: 100,
-          left: 20,
-          right: 20,
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: size * 0.2),
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        print("Recevie");
-                      },
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          color: IColor().DARK_BUTTOM_COLOR.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(45),
-                        ),
-                        child: Icon(
-                          Icons.arrow_downward,
-                          size: 50,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Text(
-                        "Recevie",
-                        style: Themes.dark.textTheme.bodyText1,
-                      ),
-                    )
-                  ],
-                ),
-                InkWell(
-                  onTap: () {
-                    print("send");
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          color: Color(0xffF2F2F7).withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(45),
-                        ),
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 50,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text(
-                          "Send",
-                          style: Themes.dark.textTheme.bodyText1,
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  double appear(double shrinkOffset) => shrinkOffset / expandedHeight;
-
-  double disappear(double shrinkOffset) => 1 - shrinkOffset / expandedHeight;
-
-  Widget buildAppBar(double shrinkOffset) => AppBar(
-        automaticallyImplyLeading: false,
-        leading: Image.asset("assets/icons/setting.png"),
-        actions: [Image.asset("assets/icons/search.png")],
-        title: Text(
-          "\$352.0",
-          style: Themes.dark.textTheme.headline3,
-        ),
-        centerTitle: true,
-      );
-
-  // Widget buildBackground(double shrinkOffset) => Opacity(
-  //       opacity: disappear(shrinkOffset),
-  //       child: Image.network(
-  //         'https://source.unsplash.com/random?mono+dark',
-  //         fit: BoxFit.cover,
-  //       ),
-  //     );
-
-  @override
-  double get maxExtent => expandedHeight;
-
-  @override
-  double get minExtent => kToolbarHeight + 30;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
-}
-
 
 
 

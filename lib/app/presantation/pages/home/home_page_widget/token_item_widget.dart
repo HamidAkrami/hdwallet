@@ -112,7 +112,7 @@ class TokenItemWidget extends StatelessWidget {
                     color: IColor().Dark_CHECK_COLOR.withOpacity(0.2),
                   ),
                   child: Text(
-                    chart!!,
+                    chart!,
                     style: TextStyle(color: IColor().Dark_CHECK_COLOR),
                   ),
                 )

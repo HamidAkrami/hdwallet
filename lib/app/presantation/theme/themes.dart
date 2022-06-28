@@ -114,7 +114,8 @@ class IColor {
   Color Dark_CHECK_COLOR = Color(0xff30D158);
   Color DARK_ACCENT_COLOR = Colors.lightBlueAccent;
   Color DARK_TEXT_COLOR = Color(0xFFFFFFFF);
-  Color DARK_INPUT_COLOR = Colors.black26;
+  Color DARK_INPUT_COLOR = Color(0xff131212);
   Color DARK_RULE_WIDGET_COLOR = Color(0xff636366);
   Color DARK_BUTTOM_COLOR = Color(0xffF2F2F7);
+  Color DARK_WARNING_COLOR = Color(0xffFF453A);
 }
