@@ -41,6 +41,8 @@ dependencies:
   flutter_svg: ^1.1.0
   page_view_indicators: ^2.0.0
   device_preview: ^1.1.0
+  qr_flutter: ^4.0.0
+
  
 
 dev_dependencies:

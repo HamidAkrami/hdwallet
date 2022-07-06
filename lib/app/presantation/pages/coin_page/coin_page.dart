@@ -1,10 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:hd_wallet/app/data/models/coin_model.dart';
 import 'package:hd_wallet/app/data/models/transaction_model.dart';
 import 'package:hd_wallet/app/presantation/pages/coin_page/widgets/transaction_widget_item.dart';
-import 'package:hd_wallet/app/presantation/pages/home/home_page_widget/send_receive_bottom_sheet.dart';
+
+import 'package:hd_wallet/app/presantation/pages/send_and_receive_page/receive_page.dart';
+import 'package:hd_wallet/app/presantation/pages/send_and_receive_page/send_page.dart';
 import 'package:hd_wallet/app/presantation/theme/themes.dart';
 
 class CoinPage extends StatefulWidget {
@@ -43,6 +43,28 @@ class _CoinPageState extends State<CoinPage> {
         amount: 111,
         symbol: "BTC")
   ];
+
+  showSendPage() {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        context: context,
+        builder: (context) {
+          return SendPage();
+        });
+  }
+
+  showReceivePage() {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        context: context,
+        builder: (context) {
+          return ReceivePage(
+            contract: "123456",
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +142,7 @@ class _CoinPageState extends State<CoinPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "325,231,213 BTC",
+                  "325 BTC",
                   style: TextStyle(fontSize: 16),
                 ),
               ),
@@ -139,7 +161,9 @@ class _CoinPageState extends State<CoinPage> {
                     Column(
                       children: [
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            showReceivePage();
+                          },
                           child: Container(
                             width: 50,
                             height: 50,
@@ -169,7 +193,9 @@ class _CoinPageState extends State<CoinPage> {
                     Column(
                       children: [
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            showSendPage();
+                          },
                           child: Container(
                             width: 50,
                             height: 50,
